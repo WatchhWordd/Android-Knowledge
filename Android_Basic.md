@@ -97,18 +97,16 @@ Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
  （5）集合对象没清理造成的内存泄露.
 
 9.java对象的四种引用：
-                   （1）强引用：创建一个对象并把这个对象直接赋给一个变量，
-                       eg ：Person person = new Person(“sunny”); 不管系统资源有么的紧张，强引用的对象都绝对不会被回收，即使他以后不会再用到。
-                   （2）软引用：通过SoftReference类实现，
-                       eg : SoftReference<Person> p = new SoftReference<Person>(new Person(“Rain”));
-                       内存非常紧张的时候会被回收，其他时候不会被回收，所以在使用之前要判断是否为null从而判断他是否已经被回收了。
-
-                  （3）弱引用：通过WeakReference类实现，
-                      eg : WeakReference<Person> p = new WeakReference<Person>(new Person(“Rain”));
-                      不管内存是否足够，系统垃圾回收时必定会回收。
-
-                  （4）虚引用：不能单独使用，主要是用于追踪对象被垃圾回收的状态。
-                      通过PhantomReference类和引用队列ReferenceQueue类联合使用实现。
+  （1）强引用：创建一个对象并把这个对象直接赋给一个变量，
+      eg ：Person person = new Person(“sunny”); 不管系统资源有么的紧张，强引用的对象都绝对不会被回收，即使他以后不会再用到。
+  （2）软引用：通过SoftReference类实现，
+       eg : SoftReference<Person> p = new SoftReference<Person>(new Person(“Rain”));
+       内存非常紧张的时候会被回收，其他时候不会被回收，所以在使用之前要判断是否为null从而判断他是否已经被回收了。
+  （3）弱引用：通过WeakReference类实现，
+      eg : WeakReference<Person> p = new WeakReference<Person>(new Person(“Rain”));
+      不管内存是否足够，系统垃圾回收时必定会回收。
+  （4）虚引用：不能单独使用，主要是用于追踪对象被垃圾回收的状态。
+      通过PhantomReference类和引用队列ReferenceQueue类联合使用实现。
 
 10.android垃圾回收机制：回收优先级：Empty process、Background process、Service process、Visible process、Foreground process。
 
