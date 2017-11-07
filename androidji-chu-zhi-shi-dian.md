@@ -156,7 +156,9 @@ Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
 
 （5）集合对象没清理造成的内存泄露
 
-9.java对象的四种引用：（1）强引用：创建一个对象并把这个对象直接赋给一个变量，
+9.java对象的四种引用：
+
+                                       （1）强引用：创建一个对象并把这个对象直接赋给一个变量，
 
 ```
                           eg ：Person person = new Person\(“sunny”\); 不管系统资源有么的紧张，
