@@ -10,7 +10,7 @@ android系统架构，采用了分层架构。分为四个层：应用程序层�
 
 （4）Linux内核：Android的核心系统服务依赖于Linux2.6内核，如安全性，内存管理，进程管理， 网络协议栈和驱动模型。
 
-二.Android四大组件：
+二.Android四大组件
 
 1.Activity：
 
@@ -45,7 +45,6 @@ Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
            （6）声明public static String型的变量，用于指定要从游标处返回的数据列。
            （7）查询返回一个Cursor类型的对象。通过使用ContentResover().notifyChange()方法来通知监听器关于数据更新的信息
             8）在AndroidMenifest.xml中使用<provider>标签来设置Content Provider。
-
 
 三.Android常见问题：
 
