@@ -30,15 +30,19 @@ Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
 
 1）context.startService\(\),context.stopService\(\);
 
-  生命周期：oncreate\\(\\)--onStartCommand\\(\\)--onDestory\\(\\);
+生命周期：onCreate\(\)--onStartCommand\(\)--onDestory\(\);
 
-
-
- 服务存在：onStartCommand\\(\\);
+服务存在：onStartCommand\(\);
 
 2）context.bindService\(\),context.unbindService\(\);
 
- 生命周期：onCreate\\(\\)--onBind\\(\\)--onUnbind\\(\\)--onDestory\\(\\);
+生命周期：onCreate\(\)--onBind\(\)--onUnbind\(\)--onDestory\(\);
 
+3.Broadcast
 
+    发送广播的三种方式：普通广播，有序广播，粘性广播
+
+    Context.sendBroadcast\(\)，Context.sendOrderedBroadcast\(\)，Context.sendStickyBroadcast\(\)
+
+    注册方式：静态注册和动态注册。
 
