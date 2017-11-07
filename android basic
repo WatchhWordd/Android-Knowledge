@@ -84,8 +84,8 @@ Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
 
          4)线程：UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。
 
-7.AsyncTask：常用方法doInBackGround（Params....）,onPostExecute(Result),onProgressUpdate(Params...),onPreExecute()
-                      ,onCancelled();
+7.AsyncTask：常用方法doInBackGround（Params....）,onPostExecute(Result),onProgressUpdate(Params...),onPreExecute(),onCancelled();
+                      
 
 8.内存泄露的原因: 
  （1）资源文件未关闭（cursor,file等）；
