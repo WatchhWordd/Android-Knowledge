@@ -178,5 +178,10 @@ mvp：model、view、present，直接通过present去相互之间操作，而pre
 
 mvvm:view、viewmodel、model。通过data binding框架绑定数据。
 
+35.LayoutInflater.inflate()中参数attachToRoot
+   (1)为true：将当前布局立即加到根布局上
+   (2)为false:当前布局先不加到根布局上，需要root.addView才能加到跟布局上
+   注意：Android中有些组件有其自身的”add View”机制，如：Fragment.onCreateView，如果设置为true就会报错。
+
 
 
