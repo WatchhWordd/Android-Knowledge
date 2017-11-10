@@ -1,20 +1,20 @@
 # Android基础知识点
 
-一.Android框架：
+## Android框架：
 
 android系统架构，采用了分层架构。分为四个层：应用程序层、应用程序框架层、系统运行库层和Linux核心层。
 
-（1）应用程序
+1 应用程序
 
-（2）隐藏在每个应用后面的一系列服务和系统：包括views，Content Providers，Resource Manager，通知管理器，活动管理器。
+2 隐藏在每个应用后面的一系列服务和系统：包括views，Content Providers，Resource Manager，通知管理器，活动管理器。
 
-（3）程序库和Android运行库：每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟 机实例。
+3 程序库和Android运行库：每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟 机实例。
 
-（4）Linux内核：Android的核心系统服务依赖于Linux2.6内核，如安全性，内存管理，进程管理， 网络协议栈和驱动模型。
+4 Linux内核：Android的核心系统服务依赖于Linux2.6内核，如安全性，内存管理，进程管理， 网络协议栈和驱动模型。
 
-二.Android四大组件
+## Android四大组件
 
-1.Activity：
+1 Activity：
 
 生命周期：onCreate--onStart--onRestart--onResume--onPause--onStop--onDestory
 
@@ -24,21 +24,21 @@ Back按键：onPause--onStop--onDestory
 
 Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
 
-2.Service:
-开启关闭服务：（1）context.startService(),context.stopService();
-                 生命周期：oncreate()--onStartCommand()--onDestory();
-                 服务存在：onStartCommand();
+2 Service:
+开启关闭服务：（1）context.startService(),context.stopService();  
+			     生命周期：oncreate()--onStartCommand()--onDestory();  
+                 服务存在：onStartCommand();  
              （2）context.bindService(),context.unbindService();
                  生命周期：onCreate()--onBind()--onUnbind()--onDestory();
 
-3.Broadcast
+3 Broadcast
   发送广播的三种方式：普通广播，有序广播，粘性广播
   Context.sendBroadcast()，Context.sendOrderedBroadcast()，Context.sendStickyBroadcast()
   注册方式：静态注册和动态注册。
   
-4.ContentProvider：
+4 ContentProvider：
 共享数据
-创建的步骤：（1）继承ContentProvider
+创建的步骤：(1)继承ContentProvider
            （2）定义一个名为CONTENT\_URI，并且是public static final的Uri类型的类变量， 你必须为其指定一个
                  唯一的字符串值，最好的方案是以类的全名称。
            （3）定义返回给客户端的数据列名，保证唯一性
@@ -48,63 +48,72 @@ Home按键：退出onPause--onStop，进入onRestart--onStart--onResume
            （7）查询返回一个Cursor类型的对象。通过使用ContentResover().notifyChange()方法来通知监听器关于数据更新的信息
             8）在AndroidMenifest.xml中使用<provider>标签来设置Content Provider。
 
-三.Android常见问题：
+## Android常见问题：
 
-1.intent传递的数据类型：Serializable，基本数据类型、Parcelable、Bundle。
+1 intent传递的数据类型：Serializable，基本数据类型、Parcelable、Bundle。
 
-2.Anr出现的原因及解决方法：
+2 Anr出现的原因及解决方法：
 原因：主线程5s内没有响应，broadcastReceiver 10s内没有完成返回。
 
-3.五种布局：FrameLayout，RelativeLayout，LinearLayout，AbsoluteLayout，TableLayout。
+3 五种布局：FrameLayout，RelativeLayout，LinearLayout，AbsoluteLayout，TableLayout。
 
-4.数据存储的方式：
+4 数据存储的方式：
   使用SharedPreferences存储;
   文件存储;
   数据库存储;
   使用ContentProvider存储;
   网络存储;
 
-5.横竖屏切换的生命周期：竖屏--横屏：onSaveInstanceState--onPause--onStop--onDestory--onCreate--onStart--
+5 横竖屏切换的生命周期：竖屏--横屏：onSaveInstanceState--onPause--onStop--onDestory--onCreate--onStart--
                                  onRestoreInstanceSave--onResume
-                      横屏--竖屏：上面步骤执行两次
-修改AndroidManifest.xml，把该Activity添加 android:configChanges="orientation"
-同上，不过横屏到竖屏只执行一次，不重复了，并最后执行一次onConfigurationChanged
-修改AndroidManifest.xml，把该Activity添加 android:configChanges="orientation\|KeyboardHidden"
-竖屏--横屏：onConfigChanged--onConfigurationChanged;
-横屏--竖屏：onConfigurationChanged--onConfigurationChanged
+                      横屏--竖屏：上面步骤执行两次  
+					  
+修改AndroidManifest.xml，把该Activity添加 android:configChanges="orientation"  
 
-6.Handler的消息机制：Looper负责创建一个MessageQuene对象，然后进入一个循环体中无限循环的从MessageQuene中读取消
-                   息，而消息的创建者就是Handler或者多个Handler。
-                  andriod提供了 Handler 和 Looper 来满足线程间的通信。Handler 先进先出原则。Looper类用来管理特定线
-                   程内对象之间的消息交换(Message Exchange)。
+同上，不过横屏到竖屏只执行一次，不重复了，并最后执行一次onConfigurationChanged  
 
-         1)Looper: 一个线程可以产生一个Looper对象，由它来管理此线程里的Message Queue(消息队列)。
+修改AndroidManifest.xml，把该Activity添加 android:configChanges="orientation\|KeyboardHidden"  
 
-         2)Handler: 你可以构造Handler对象来与Looper沟通，以便push新消息到Message Queue里;或者接收Looper从Message Queue取出所送来的消息。
+竖屏--横屏：onConfigChanged--onConfigurationChanged;  
 
-         3)Message Queue(消息队列):用来存放线程放入的消息。
+横屏--竖屏：onConfigurationChanged--onConfigurationChanged  
 
-         4)线程：UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。
+
+6 Handler的消息机制：  
+Looper负责创建一个MessageQuene对象，然后进入一个循环体中无限循环的从MessageQuene中读取消息，而消息的创建者就是Handler或者多个Handler.andriod提供了 Handler 和 Looper 来满足线程间的通信。Handler 先进先出原则。Looper类用来管理特定线程内对象之间的消息交换(Message Exchange)。  
+- Looper: 一个线程可以产生一个Looper对象，由它来管理此线程里的Message Queue(消息队列)。
+- Handler: 你可以构造Handler对象来与Looper沟通，以便push新消息到Message Queue里;或者接收Looper从Message Queue取出所送来的消息。
+- Message Queue(消息队列):用来存放线程放入的消息。
+- 线程：UI thread 通常就是main thread，而Android启动程序时会替它建立一个Message Queue。
 
 7.AsyncTask：常用方法doInBackGround（Params....）,onPostExecute(Result),onProgressUpdate(Params...),onPreExecute(),onCancelled();
                       
 
-8.内存泄露的原因: 
- （1）资源文件未关闭（cursor,file等）；
- （2）构造Adapter时，没有使用缓存的convertView；
-  (3）Bitmap对象在没有使用时调用recycle()释放内存；
-  (4）注册没取消造成的内存泄露;
- （5）集合对象没清理造成的内存泄露.
+8.内存泄露的原因:   
 
-9.java对象的四种引用：
+ (1)资源文件未关闭（cursor,file等）；  
+ 
+(2)构造Adapter时，没有使用缓存的convertView；  
+ 
+  (3)Bitmap对象在没有使用时调用recycle()释放内存；  
+  
+  (4)注册没取消造成的内存泄露;  
+  
+ (5)集合对象没清理造成的内存泄露.
+
+9.java对象的四种引用：  
+
   （1）强引用：创建一个对象并把这个对象直接赋给一个变量，
-      eg ：Person person = new Person(“sunny”); 不管系统资源有么的紧张，强引用的对象都绝对不会被回收，即使他以后不会再用到。
+      eg ：Person person = new Person(“sunny”); 不管系统资源有么的紧张，强引用的对象都绝对不会被回收，即使他以后不会再用到。  
+	  
   （2）软引用：通过SoftReference类实现，
        eg : SoftReference<Person> p = new SoftReference<Person>(new Person(“Rain”));
-       内存非常紧张的时候会被回收，其他时候不会被回收，所以在使用之前要判断是否为null从而判断他是否已经被回收了。
+       内存非常紧张的时候会被回收，其他时候不会被回收，所以在使用之前要判断是否为null从而判断他是否已经被回收了。  
+	   
   （3）弱引用：通过WeakReference类实现，
       eg : WeakReference<Person> p = new WeakReference<Person>(new Person(“Rain”));
-      不管内存是否足够，系统垃圾回收时必定会回收。
+      不管内存是否足够，系统垃圾回收时必定会回收。  
+	  
   （4）虚引用：不能单独使用，主要是用于追踪对象被垃圾回收的状态。
       通过PhantomReference类和引用队列ReferenceQueue类联合使用实现。
 
@@ -178,8 +187,10 @@ mvp：model、view、present，直接通过present去相互之间操作，而pre
 
 mvvm:view、viewmodel、model。通过data binding框架绑定数据。
 
-35.LayoutInflater.inflate()中参数attachToRoot
-   (1)为true：将当前布局立即加到根布局上
+35.LayoutInflater.inflate()中参数attachToRoot  
+
+   (1)为true：将当前布局立即加到根布局上  
+   
    (2)为false:当前布局先不加到根布局上，需要root.addView才能加到跟布局上
    注意：Android中有些组件有其自身的”add View”机制，如：Fragment.onCreateView，如果设置为true就会报错。
 
