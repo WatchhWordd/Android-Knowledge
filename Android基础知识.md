@@ -192,7 +192,10 @@ mvvm:view、viewmodel、model。通过data binding框架绑定数据。
    (1)为true：将当前布局立即加到根布局上  
    
    (2)为false:当前布局先不加到根布局上，需要root.addView才能加到跟布局上
-   注意：Android中有些组件有其自身的”add View”机制，如：Fragment.onCreateView，如果设置为true就会报错。
+   注意：Android中有些组件有其自身的”add View”机制，如：Fragment.onCreateView，如果设置为true就会报错。  
+36 View类的invalidate()和postInvalidate()方法  
+   在Android中提供了一个叫invalidate()的方法来让我们重绘我们的View。poistInvalidate()方法和invaliadate方法相同，只是它可以在子线程中运行.  
+37 
 
 
 
