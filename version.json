@@ -1,0 +1,11 @@
+{
+	"retCode": "00000",
+	"retInfo": "true",
+	"data": {
+		"desc": "一起来做个App吧",
+		"versionCode": "2301",
+		"versionName": "2.3.01",
+		"resourceUrl": "http://www.wanandroid.com/blog/show/2",
+		"isForce": 1
+	}
+}
